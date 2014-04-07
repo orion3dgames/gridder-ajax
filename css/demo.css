@@ -6,3 +6,21 @@ and open the template in the editor.
 /*  Created on : 07/04/2014, 12:23:08 PM Author     : USER
 */
 body { font-family: Arial, sans-serif; font-size: 12px; }
+
+.container { width: 960px; margin: 0 auto; }
+
+/* Demo Theme */
+.gridder-list { list-style-type: none; margin: 0px; padding: 0px; }
+.gridder-list .item { width: 32%; margin-right: 2%; margin-bottom: 20px; text-align: center; padding: 5px; background: #EEE; border-radius: 5px; -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2); -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2); box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2); }
+.gridder-list .item a { text-decoration: none; color: #000; }
+.gridder-list .item.last { margin-right: 0%; }
+.gridder-list .item.selectedItem { background: #FFF; }
+.gridder-list .item img { width: 100%; }
+.gridder-list .item .title { display: block; font-weight: bold; }
+
+.gridder-show { padding: 20px; -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2); -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2); box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2); border-radius: 5px; margin-bottom: 20px; }
+.gridder-show .padding { display: none; }
+.gridder-show .images { float: left; width: 50%; }
+.gridder-show .images img { width: 100%; }
+.gridder-show .content { float: left; width: 50%; padding-left: 20px; }
+.gridder-show .content .title { display: block; font-size: 30px; }

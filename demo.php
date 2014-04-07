@@ -23,7 +23,7 @@
                 ?>
                     <li class="item <?php if($i % $columns == 0 || $i == 0){echo 'last';} ?> item_<?php echo $i; ?>">
                         <a href="item_<?php echo $i; ?>" title="Item <?php echo $i; ?>" class="link">
-                            <img src="http://placehold.it/300x200" />
+                            <img src="http://lorempixel.com/300/200/food/?date=<?php echo rand(0,16); ?>" />
                             <span class="title">Item <?php echo $i?></span>
                             <span class="description">A small Description</span>
                         </a>

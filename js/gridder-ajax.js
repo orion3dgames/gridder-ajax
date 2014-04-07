@@ -22,92 +22,71 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
     $.fn.GridderAjax = function(options) {
 
         var debug_mode = true;
-        var gridder = $('<li class="product-show"></li>');
-        var loading = $('');
+        var gridder = $('<li class="gridder-show"></li>');
         var mybloc;
         var visible = false;
         var animationSpeed = 600;
         var animationEasing = "easeInOutExpo";
 
-        var rootUrl = "URL";
-
-        var updateContent = function(State) {
-            var thisUrl = getUrlVars(State.url)["shoe"];
-            var parentproduct = $('.' + thisUrl);
+        var updateContent = function(Item) {
+            
+            var $this = Item;
+            var $link = $this.find('.link');
+            var thisTitle = $link.attr('title');
 
             /* REMOVE PREVIOUS CONTAINER*/
-            $('.product-show').remove();
-            $('.selectedProduct').removeClass('selectedProduct');
+            $('.gridder-show').remove();
+            $('.selectedItem').removeClass('selectedItem');
 
             /* ACTIVE STATE */
-            if (!$(parentproduct).hasClass('selectedProduct')) {
-                $('.selectedProduct').removeClass('selectedProduct');
-                $(parentproduct).addClass("selectedProduct");
+            if (!$this.hasClass('selectedItem')) {
+                $('.selectedItem').removeClass('selectedItem');
+                $this.addClass("selectedItem");
             }
 
             /* ADD LOADING BLOC */
-            var $htmlcontent = $('<li class="product-show loading"></li>');
-            mybloc = $htmlcontent.insertAfter('.' + thisUrl);
-
+            var $htmlcontent = $('<li class="gridder-show loading"></li>');
+            mybloc = $htmlcontent.insertAfter($this);
+            
             /* SCROOL TO CORRECT BLOC */
-            $.scrollTo($(".product-show"), 0, {
-                easing: animationEasing,
-                offset: -200
+            $.scrollTo($this, 0, {
+                easing: animationEasing
             });
 
             /* AJAX REQUEST */
             var request = $.ajax({
-                url: rootUrl + "api/data.php?alias=" + thisUrl,
+                url: "api/data.php",
                 type: "POST",
-                data: null
+                data: {title: thisTitle}
             });
 
             request.done(function(data) {
                 mybloc.html(data);
 
-                var mainimage = mybloc.find('#image').attr('src');
-
-                var $img = $("<img />").attr('src', mainimage);
-                $img.error(function() {
-                    mainimage = rootUrl + 'uploads/images/no-product-image-found.jpg';
-                    console.log(mainimage);
-                });
+                var mainimage = mybloc.find('.images img').attr('src');
                 
                 $("<img>", {src: mainimage}).imagesLoaded( function(){
                     mybloc.removeClass('loading');
 
                     if (!visible) {
-                        mybloc.find('#smallpadding').slideDown(animationSpeed, animationEasing, function() {
+                        mybloc.find('.padding').slideDown(animationSpeed, animationEasing, function() {
                             visible = true;
                         });
                     } else {
-                        mybloc.find('#smallpadding').fadeIn(animationSpeed, animationEasing, function() {
+                        mybloc.find('.padding').fadeIn(animationSpeed, animationEasing, function() {
                             visible = true;
                         });
                     }
-                    
-                    /* EXPAND */
-                    $(mybloc).on('click', '.expand', function(e) {
-                        e.preventDefault();
-                        console.log('expand');
-                    });
                 });
             });
         };
 
         /* PUSH STATE ON PRODUCT CLICK */
-        $('.product').click(function(e) {
+        $('.item').click(function(e) {
             e.preventDefault();
 
-            if (!$(this).next().hasClass('product-show')) {
-                var thisUrl = $(this).find('.link').attr('href');
-                var thisTitle = $(this).find('.title').html();
-
-                if (debug_mode) {
-                    console.log('Pushed : ' + thisUrl) + ' | ' + thisTitle;
-                }
-                
-                updateContent(State);
+            if (!$(this).next().hasClass('gridder-show')) {
+                updateContent($(this));  
             }
         });
 
@@ -116,9 +95,7 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
             /* Close */
             $(document).on('click', '.closeModal', function(e) {
                 e.preventDefault();
-
-                var $mybloc = $('.product-show');
-                var $myblocinside = $('#smallpadding');
+                var $mybloc = $('.gridder-show');
                 $('.selectedProduct').removeClass('selectedProduct');
                 $mybloc.slideUp(200, animationEasing, function() {
                     $mybloc.remove();
@@ -128,12 +105,12 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
 
             /* Next */
             $(document).on('click', '.nextModal', function() {
-                $(this).parents('.product-show').next().trigger('click');
+                $(this).parents('.gridder-show').next().trigger('click');
             });
 
             /* Previous */
             $(document).on('click', '.prevModal', function() {
-                $(this).parents('.product-show').prev().prev().trigger('click');
+                $(this).parents('.gridder-show').prev().prev().trigger('click');
             });
 
         });
