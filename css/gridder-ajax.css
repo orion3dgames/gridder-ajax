@@ -1,0 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*  Created on : 07/04/2014, 12:22:09 PM Author     : Orion Gunning
+*/
+/* Do not delete these */
+.gridder-list *, .gridder-list *:before, .gridder-list *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.gridder-list .item { display: inline-block; }
+
+/* Demo Theme */
+.gridder-list { list-style-type: none; margin: 0px; padding: 0px; }
+.gridder-list .item { width: 32%; margin-right: 2%; margin-bottom: 20px; text-align: center; padding: 5px; background: #EEE; }
+.gridder-list .item a { text-decoration: none; color: #000; }
+.gridder-list .item.last { margin-right: 0%; }
+.gridder-list .item img { width: 100%; }
+.gridder-list .item .title { display: block; font-weight: bold; }
