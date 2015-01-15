@@ -21,8 +21,8 @@
                 $columns = 3;
                 while($i < 22){
                 ?>
-                    <li class="item <?php if($i % $columns == 0 || $i == 0){echo 'last';} ?> item_<?php echo $i; ?>">
-                        <a href="item_<?php echo $i; ?>" title="Item <?php echo $i; ?>" class="link">
+                    <li class="item <?php if($i % $columns == 0 || $i == 0){echo 'last';} ?> item-00<?php echo $i * 1000; ?> do-expand-item">
+                        <a href="item-00<?php echo $i * 1000; ?>" title="Item <?php echo $i; ?>" class="link">
                             <img src="http://lorempixel.com/300/200/food/?date=<?php echo rand(0,16); ?>" />
                             <span class="title">Item <?php echo $i?></span>
                             <span class="description">A small Description</span>
