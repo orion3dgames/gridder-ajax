@@ -15,7 +15,7 @@ body { font-family: Arial, sans-serif; font-size: 12px; }
 .gridder-list .item a { text-decoration: none; color: #000; }
 .gridder-list .item.last { margin-right: 0%; }
 .gridder-list .item.selectedItem { background: #FFF; }
-.gridder-list .item img { width: 100%; }
+.gridder-list .item img { width: 100%; height:200px; }
 .gridder-list .item .title { display: block; font-weight: bold; }
 
 .gridder-show { padding: 20px; -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2); -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2); box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.2); border-radius: 5px; margin-bottom: 20px; }

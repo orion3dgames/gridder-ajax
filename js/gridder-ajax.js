@@ -41,29 +41,25 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
 		}
         
         var updateContent = function(State) {
-            
-            console.log('TEST1');
-            
+
             var thisUrl = State.url.split("=");
 			thisUrl = thisUrl[1];
 			var parentproduct = $('.'+thisUrl);
-
+            
             /* ACTIVE STATE */
             if (!parentproduct.hasClass('selectedItem')) {
                 $('.selectedItem').removeClass('selectedItem');
                 parentproduct.addClass("selectedItem");
-            }else{
-                console.log('TEST2');
-            }
+            } 
+           
+            /* SCROLL TO CORRECT BLOC */
+            $.scrollTo($('.selectedItem'), animationSpeed, {
+                easing: animationEasing
+            });
 
             /* ADD LOADING BLOC */
             var $htmlcontent = $('<li class="gridder-show loading"></li>');
             mybloc = $htmlcontent.insertAfter(parentproduct);
-            
-            /* SCROOL TO CORRECT BLOC */
-            $.scrollTo(parentproduct, 0, {
-                easing: animationEasing
-            });
 
             /* AJAX REQUEST */
             var thisTitle = $('.'+thisUrl).find('.title').html();
