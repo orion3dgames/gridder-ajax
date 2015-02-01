@@ -62,7 +62,7 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
             mybloc = $htmlcontent.insertAfter(parentproduct);
 
             /* AJAX REQUEST */
-            var thisTitle = $('.'+thisUrl).find('.title').html();
+            var thisTitle = $('.'+thisUrl+' a').attr('title');
             var request = $.ajax({
                 url: "api/data.php",
                 type: "POST",
@@ -106,7 +106,7 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
             if (!$(this).next().hasClass('gridder-show')) {
                 $('.gridder-show').remove();
                 var thisUrl = $(this).find('.link').attr('href');
-                var thisTitle = $(this).find('.title').html();
+                var thisTitle = $(this).find('.link').attr('title');
                 History.pushState({state:1, rand:Math.random()}, thisTitle+' | Sitename', "?item="+thisUrl);
             }
 			e.preventDefault();
