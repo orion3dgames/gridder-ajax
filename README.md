@@ -11,7 +11,7 @@ reload a new page. This plugin allows you to recreate a similar effect on a thum
 a preview when clicking on a thumbnail and to show a larger image and some other content like a title, a description 
 and a link
 
-VIEW DEMO : http://www.oriongunning.com/demo/gridder-ajax/demo.php
+**VIEW DEMO** : http://www.oriongunning.com/demo/gridder-ajax/demo.php
 
 Too complicated? You can use this static version: https://github.com/oriongunning/gridder
 
