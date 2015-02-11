@@ -7,6 +7,5 @@ and open the template in the editor.
 */
 /* Do not delete these */
 .gridder-list *, .gridder-list *:before, .gridder-list *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-.gridder-list .item { display: inline-block; }
+.gridder-list .item { display: inline-block; width: 20%; }
 .gridder-list .gridder-show { float: left; display: block; width: 100%; min-height: 100px; }
-.gridder-list .gridder-show.loading { background: white url("../images/loading-spin.svg") no-repeat center; color: #000; }

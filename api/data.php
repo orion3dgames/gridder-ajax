@@ -1,29 +1,43 @@
+<?php
+include 'key.php';
+
+$id = explode('-', $_POST['id']);
+$id = $id[1];
+$url = 'https://global.api.pvp.net/api/lol/static-data/oce/v1.2/champion/'.$id.'/?champData=all&api_key='.$key;
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+
+// Set so curl_exec returns the result instead of outputting it.
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+// Get the response and close the channel.
+$response = curl_exec($ch);
+curl_close($ch);
+
+$champion = json_decode($response, true);
+?>
+
 <div class="padding">
+
     <div class="images">
-        <img src="http://lorempixel.com/600/600/food/?date=<?php echo rand(0,16); ?>" />
+        <img src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/<?php echo $champion['name']; ?>_0.jpg" />
     </div>
     <div class="content">
         <a href="#" class="closeModal">X Close</a>
+		<hr />
+		<a href="#" class="prevModal">Previous Champion</a> | <a href="#" class="nextModal">Next Champion</a>
+		<hr />
 
-        <div class="title"><?php echo $_POST['title']; ?></div>
+        <h1><?php echo $champion['name'] ; ?></h1>
+		<h2><?php echo $champion['title'] ; ?></h2>
+
         <hr />
 
         <div class="description">
-            <p>
-                Aliquam tempus ullamcorper arcu. Aliquam in tortor felis. Pellentesque habitant morbi tristique senectus et netus et malesuada 
-                fames ac turpis egestas. Sed eget dolor sem. Vestibulum massa massa, imperdiet sed odio sed, adipiscing eleifend erat. Cras lobortis 
-                volutpat luctus. Aenean sit amet ligula ut nulla commodo bibendum.
-            </p>
-            <p>
-                Nam quis nibh id metus ornare tincidunt. Nulla blandit, sapien eu venenatis ornare, purus turpis semper dolor, et fermentum enim sapien
-                id eros. Sed mattis pharetra erat at tristique. Nam ut gravida elit. Sed non erat vel dolor tincidunt adipiscing ut sed massa. Ut tincidunt 
-                ligula et eros venenatis, vitae posuere metus blandit. Donec a sapien lectus. Quisque ultricies auctor metus, eu suscipit turpis viverra vitae.
-                Duis vitae commodo sem, vitae porttitor dolor.
-            </p>
+            <?php echo $champion['lore'] ; ?>
         </div>
-        
-        <a href="#" class="prevModal">Previous</a> | 
-        <a href="#" class="nextModal">Next</a>
-        
+		
     </div>
 </div>
