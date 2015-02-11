@@ -30,7 +30,13 @@ function getParameterByName(name) {
 ;(function($) {
     
     $.fn.GridderAjax = function(options) {
-
+                
+        /* SET VARS */
+        var visible = false;
+        var gridder = $('<li class="gridder-show"></li>');
+        var mybloc;
+        var $gridder_parent = this;
+        
         /* GET DEFAULT OPTIONS OR USE THE ONE PASSED IN THE FUNCTION  */
         var opts = $.extend( {}, $.fn.GridderAjax.defaults, options );
         
@@ -39,11 +45,6 @@ function getParameterByName(name) {
         var animationSpeed = opts.animationSpeed;
         var animationEasing = opts.animationEasing;
         var scrollOffset = opts.scrollOffset;
-        
-        /* SET VARS */
-        var visible = false;
-        var gridder = $('<li class="gridder-show"></li>');
-        var mybloc;
         
         /* INITIALIZE THE HISTORY PLUGIN */
         var History = window.History;
@@ -61,6 +62,13 @@ function getParameterByName(name) {
                 $('.selectedItem').removeClass('selectedItem');
                 parentproduct.addClass("selectedItem");
             } 
+            
+            /* ADD CLASS TO THE GRIDDER CONTAINER
+             * So you can apply global style when item selected. 
+             */
+            if (!$gridder_parent.hasClass('hasSelectedItem')) {
+                $gridder_parent.addClass("hasSelectedItem");
+            }
            
             /* SCROLL TO CORRECT BLOC */
             $.scrollTo($('.selectedItem'), animationSpeed, {
@@ -137,7 +145,9 @@ function getParameterByName(name) {
                 $('.selectedProduct').removeClass('selectedProduct');
                 $mybloc.slideUp(200, animationEasing, function() {
                     $mybloc.remove();
+                    $gridder_parent.removeClass("hasSelectedItem");
                     visible = false;
+                    //History.back();
                 });
             });
 

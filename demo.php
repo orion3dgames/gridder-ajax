@@ -14,8 +14,6 @@
             <h1>Gridder Demo</h1>
             <p class="headline">Brought to you by <a href="http://www.oriongunning.com">www.oriongunning.com</a>
 
-            <h2>With AJAX Demo</h2>
-
 			<?php
 			include 'api/key.php';
 
@@ -34,13 +32,19 @@
 
 			<ul class="gridder-list">
 				<?php foreach($json['data'] as $key => $champion): ?>
+
+					<?php
+					$str_replace_strings = array(' ',',',"'",'.');
+					$url_image = str_replace($str_replace_strings,'', $champion['name']);
+					//$url_image = ucfirst(strtolower($url_image))
+					?>
+
 					<li class="item item-<?php echo $champion['id']; ?> do-expand-item">
                         <a href="item-<?php echo $champion['id']; ?>" title="<?php echo $champion['name']; ?> | <?php echo $champion['title']; ?>" class="link">
-                            <img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/<?php echo $champion['name']; ?>_0.jpg" />
+                            <img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/<?php echo $url_image; ?>_0.jpg" />
                             <span class="title"><?php echo $champion['name']; ?></span>
                             <span class="description"><?php echo $champion['title']; ?></span>
                         </a>
-                        <span class="selectedBox"></span>
 				<?php endforeach; ?>
             </ul>
 
@@ -51,9 +55,9 @@
         <script>
             jQuery(document).ready(function ($) {
                 // Call Gridder Ajax
-				
+
                 $('.gridder-list').GridderAjax({
-					scrollOffset: 100,
+					scrollOffset: 200,
 					rootUrl: "/gridder-ajax/"
 				});
             });

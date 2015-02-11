@@ -25,19 +25,19 @@ $champion = json_decode($response, true);
         <img src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/<?php echo $champion['name']; ?>_0.jpg" />
     </div>
     <div class="content">
-        <a href="#" class="closeModal">X Close</a>
-		<hr />
-		<a href="#" class="prevModal">Previous Champion</a> | <a href="#" class="nextModal">Next Champion</a>
-		<hr />
+		<div class="navigation">
+			<a href="#" class="closeModal">X Close</a>
+			<a href="#" class="prevModal">Previous Champion</a> | <a href="#" class="nextModal">Next Champion</a>
+		</div>
 
-        <h1><?php echo $champion['name'] ; ?></h1>
+        <h1 class="title"><?php echo $champion['name'] ; ?></h1>
 		<h2><?php echo $champion['title'] ; ?></h2>
 
         <hr />
 
-        <div class="description">
+        <p class="description">
             <?php echo $champion['lore'] ; ?>
-        </div>
-		
+        </p>
+
     </div>
 </div>
