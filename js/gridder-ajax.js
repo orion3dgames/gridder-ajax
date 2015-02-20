@@ -63,19 +63,22 @@ function getParameterByName(name) {
                 parentproduct.addClass("selectedItem");
             } 
             
+            /* SCROLL TO CORRECT BLOC */
+            $.scrollTo($('.selectedItem'), animationSpeed, {
+                easing: animationEasing,
+                offset: $('.selectedItem').height() - scrollOffset
+            });
+            
+            /* REMOVE */
+            $('.gridder-show').remove();
+            
             /* ADD CLASS TO THE GRIDDER CONTAINER
              * So you can apply global style when item selected. 
              */
             if (!$gridder_parent.hasClass('hasSelectedItem')) {
                 $gridder_parent.addClass("hasSelectedItem");
             }
-           
-            /* SCROLL TO CORRECT BLOC */
-            $.scrollTo($('.selectedItem'), animationSpeed, {
-                easing: animationEasing,
-                offset: $('.selectedItem').height() - scrollOffset
-            });
-
+            
             /* ADD LOADING BLOC */
             var $htmlcontent = $('<li class="gridder-show loading"></li>');
             mybloc = $htmlcontent.insertAfter(parentproduct);
@@ -122,7 +125,6 @@ function getParameterByName(name) {
 		/* PUSH STATE ON PRODUCT CLICK */
 		$('.do-expand-item').click(function(e) {
             if (!$(this).next().hasClass('gridder-show')) {
-                $('.gridder-show').remove();
                 var thisUrl = $(this).find('.link').attr('href');
                 var thisTitle = $(this).find('.link').attr('title');
                 History.pushState({state:1, rand:Math.random()}, thisTitle+'', "?item="+thisUrl);

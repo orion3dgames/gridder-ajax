@@ -11,7 +11,7 @@
 
         <div class="container">
 
-            <h1>Gridder Demo</h1>
+            <h1>Gridder V2 Demo</h1>
             <p class="headline">Brought to you by <a href="http://www.oriongunning.com">www.oriongunning.com</a>
 
 			<?php
@@ -28,6 +28,12 @@
 			curl_close($ch);
 
 			$json = json_decode($response, true);
+
+			/*
+			echo'<pre style="color: #FFF;">';
+			print_r($json);
+			echo'</pre>
+			*/
 			?>
 
 			<ul class="gridder-list">
@@ -36,7 +42,6 @@
 					<?php
 					$str_replace_strings = array(' ',',',"'",'.');
 					$url_image = str_replace($str_replace_strings,'', $champion['name']);
-					//$url_image = ucfirst(strtolower($url_image))
 					?>
 
 					<li class="item item-<?php echo $champion['id']; ?> do-expand-item">
