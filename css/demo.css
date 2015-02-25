@@ -14,9 +14,7 @@ body { font-family: Arial, sans-serif; font-size: 12px; background: #181817; }
 
 /* Demo Theme */
 .gridder-list { list-style-type: none; padding: 0px; }
-.gridder-list .item { display: inline-block; width: 11.625%; margin-bottom: 1%; vertical-align: top; }
-.gridder-list .item.nth-child-n, .gridder-list .item:nth-child(n) { margin-right: 1%; }
-.gridder-list .item:nth-child(8n) { margin-right: 0; }
+.gridder-list .item { display: inline-block; width: 150px; height: 290px; background: #242424; vertical-align: top; }
 .gridder-list .item a { display: block; text-decoration: none; color: #9f9f9f; padding: 10px; }
 .gridder-list .item img { width: 100%; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; overflow: hidden; }
 .gridder-list .item .title { display: block; font-weight: bold; color: #FFF; font-size: 14px; }
