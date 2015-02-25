@@ -46,7 +46,7 @@
 
 					<li class="item item-<?php echo $champion['id']; ?> do-expand-item">
                         <a href="item-<?php echo $champion['id']; ?>" title="<?php echo $champion['name']; ?> | <?php echo $champion['title']; ?>" class="link">
-                            <img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/<?php echo $url_image; ?>_0.jpg" />
+                            <div class="image"><img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/<?php echo $url_image; ?>_0.jpg" /></div>
                             <span class="title"><?php echo $champion['name']; ?></span>
                             <span class="description"><?php echo $champion['title']; ?></span>
                         </a>
