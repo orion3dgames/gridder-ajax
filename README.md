@@ -27,7 +27,7 @@ Too complicated? You can use this static version: https://github.com/oriongunnin
 ```html
 <div class="gridder-list">
 	
-  <li class="item  item_1">
+  <li class="item  item_1 do-expand-item">
     <a href="item_4" title="Item 4" class="link">
       <img src="http://lorempixel.com/300/200/food/?date=6">
       <span class="title">Item 4</span>
